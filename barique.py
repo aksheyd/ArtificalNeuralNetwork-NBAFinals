@@ -4,6 +4,8 @@
 from nba_api.stats.endpoints import TeamYearByYearStats
 import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
+import tensorflow as tf
 
 
 # Golden State Warriors data
