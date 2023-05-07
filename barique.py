@@ -32,8 +32,6 @@ data = df_data.loc[:,['WINS', 'LOSSES', 'WIN_PCT', 'CONF_RANK', 'FGM', 'FGA', 'F
 encode_finals = {"NBA_FINALS_APPEARANCE": {"N/A": 0, "FINALS APPEARANCE": 1, "LEAGUE CHAMPION" : 2}}
 data = data.replace(encode_finals)
 
-print(data)
-
 # Xvariable and YVariable
 X = data.iloc[:,:-1].values
 Y = data.iloc[:,-1].values
@@ -47,15 +45,10 @@ X_test = sc.transform(X_test)
 
 #Initialising ANN
 ann = tf.keras.models.Sequential()
-
 ann.add(tf.keras.layers.Dense(units=6,activation="relu"))
-
 ann.add(tf.keras.layers.Dense(units=6,activation="relu"))
-
 ann.add(tf.keras.layers.Dense(units=1,activation="sigmoid"))
-
 ann.compile(optimizer="adam",loss="binary_crossentropy",metrics=['accuracy'])
-
 ann.fit(X_train,Y_train,batch_size=32,epochs = 100)
 
 # predict if we make the finals 2014-2015 season (we won the championship)
