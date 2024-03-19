@@ -1,6 +1,4 @@
 #!/usr/bin/env python
-
-
 from nba_api.stats.endpoints import TeamYearByYearStats
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -8,8 +6,6 @@ import numpy as np
 import tensorflow as tf
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-
-
 
 # Golden State Warriors data
 data = TeamYearByYearStats(team_id=1610612744)
@@ -52,5 +48,5 @@ ann.compile(optimizer="adam",loss="binary_crossentropy",metrics=['accuracy'])
 ann.fit(X_train,Y_train,batch_size=32,epochs = 100)
 
 # predict if we make the finals 2014-2015 season (we won the championship)
-print(ann.predict(sc.transform([[67,15,0.817,1,3410,7137,0.478,883,2217,0.398,1313,1709,0.768,853,2814,3667,2248,1628,762,1185,496,9016,1]])) > 0.5)
-
+predict_val = (ann.predict(sc.transform([[67,15,0.817,1,3410,7137,0.478,883,2217,0.398,1313,1709,0.768,853,2814,3667,2248,1628,762,1185,496,9016,1]])) > 0.5)
+print(predict_val)
